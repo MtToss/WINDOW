@@ -35,6 +35,8 @@ public class IconTemplate {
     public void openIcon() {
         try {
             System.out.println("STILL");
+            TitleBarController titleBarController = new TitleBarController();
+
             Parent titleBar = FXMLLoader.load(getClass().getResource("TitleBar.fxml"));
             System.out.println("naandito ba?");
             Parent body = FXMLLoader.load(getClass().getResource(getFXML()));
@@ -47,8 +49,8 @@ public class IconTemplate {
 
             System.out.println("STILL2");
             pane.getChildren().add(borderPane);
-            borderPane.setLayoutX(450);
-            borderPane.setLayoutY(400);
+            borderPane.setLayoutX(350);
+            borderPane.setLayoutY(300);
             System.out.println("STILL3");
         }
         catch (IOException e) {

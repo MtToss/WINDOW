@@ -36,17 +36,21 @@ public class IconTemplate {
         try {
             BorderPane borderPane = new BorderPane();
 
-            FXMLLoader titleBarLoader = FXMLLoader.load(getClass().getResource("TitleBar.fxml"));
-            FXMLLoader bodyLoader = FXMLLoader.load(getClass().getResource(getFXML()));
-
-            TitleBarController titleBarController = new TitleBarController(borderPane);
-            titleBarLoader.setController(titleBarController);
-
-            Parent titleBar = titleBarLoader.load();
-            Parent body = bodyLoader.load();
-
-            borderPane.setTop(titleBar);
-            borderPane.setCenter(body);
+            // Load TitleBar.fxml
+            FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
+            Parent titleBarRoot = titleBarLoader.load(); // Load the FXML and get the root node
+            TitleBarController titleBarController = titleBarLoader.getController();
+            
+            // Load another FXML specified by getFXML()
+            FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
+            Parent bodyRoot = bodyLoader.load(); // Load the FXML and get the root node
+            
+            // Set the loaded nodes to the BorderPane
+            borderPane.setTop(titleBarRoot);
+            borderPane.setCenter(bodyRoot);
+            
+            // Perform any necessary operations with the controllers
+            titleBarController.setMainPane(borderPane);
 
             pane.getChildren().add(borderPane);
             borderPane.setLayoutX(350);

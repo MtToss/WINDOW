@@ -11,15 +11,6 @@ public class TitleBarController {
     public Button minimizeButton;
     public BorderPane borderPane;
 
-    TitleBarController(BorderPane pane) {
-        this.borderPane = pane;
-
-    }
-
-    TitleBarController() {
-
-    }
-
     @FXML
     public void minimizeButton() {
 
@@ -31,6 +22,10 @@ public class TitleBarController {
     @FXML
     public void closeButton() {
 
+    }
+
+    public void setMainPane(BorderPane pane) {
+        this.titBar = pane;
     }
 
 

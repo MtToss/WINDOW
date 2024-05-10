@@ -9,20 +9,17 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class IconTemplate {
+    private BorderPane borderPane = new BorderPane();
+    private Pane iconPane = new Pane();
+    private String iconName;
+    private String imagePath;
+    private String fxmlLoader;
+    private int x, y;
+    private Pane pane;
 
-    String iconName;
-    String imagePath;
-    String fxmlLoader;
-
-    int x, y;
-
-    Pane pane;
-
-
-    IconTemplate(String iconName, String imagePath, int x, int y, String fxmlLoader, Pane pane) {
+    public IconTemplate(String iconName, String imagePath, int x, int y, String fxmlLoader, Pane pane) {
         this.iconName = iconName;
         this.imagePath = imagePath;
         this.fxmlLoader = fxmlLoader;
@@ -30,65 +27,52 @@ public class IconTemplate {
         this.y = y;
         this.pane = pane;
 
+        Label nameLabel = new Label(iconName);
+        nameLabel.setLayoutX(getX());
+        nameLabel.setLayoutY(getY() + 50);
+        iconPane.getChildren().addAll(nameLabel);
     }
 
     public void openIcon() {
         try {
-            BorderPane borderPane = new BorderPane();
-
             FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
-            Parent titleBarRoot = titleBarLoader.load(); 
+            Parent titleBarRoot = titleBarLoader.load();
             TitleBarController titleBarController = titleBarLoader.getController();
-            
+
             FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
-            Parent bodyRoot = bodyLoader.load(); 
-            
+            Parent bodyRoot = bodyLoader.load();
+
             borderPane.setTop(titleBarRoot);
             borderPane.setCenter(bodyRoot);
-            
+
             titleBarController.setMainPane(borderPane);
 
             pane.getChildren().add(borderPane);
             borderPane.setLayoutX(350);
             borderPane.setLayoutY(50);
 
-            borderPane.setPrefSize(600.,400);
+            borderPane.setPrefSize(600., 400);
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
-
-
     public Pane getIcon() {
-        Pane iconPane = new Pane();
-
         Image image = new Image(imagePath);
         ImageView imageView = new ImageView(image);
-
         imageView.setFitWidth(50);
         imageView.setFitHeight(50);
-
         imageView.setX(getX());
         imageView.setY(getY());
-
-        Label nameLabel = new Label(iconName);
-
-        nameLabel.setLayoutX(getX());
-        nameLabel.setLayoutY(getY() + 50);
-
-        iconPane.getChildren().addAll(imageView, nameLabel);
+        iconPane.getChildren().addAll(imageView);
 
         iconPane.setOnMouseClicked(event -> {
             try {
                 System.out.println("OPENING");
                 openIcon();
                 System.out.println("SPECIFIC ICON JUST BEEN OPENED");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
@@ -96,20 +80,15 @@ public class IconTemplate {
         return iconPane;
     }
 
-    //method to add the components to the pane
-
     public String getFXML() {
         return fxmlLoader;
-
     }
 
     public int getX() {
         return x;
-
     }
 
     public int getY() {
         return y;
     }
-
 }

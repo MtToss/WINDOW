@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="8.0" prefWidth="587.0" style="-fx-background-color: darkgrey" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TaskBarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="46.0" prefWidth="2000.0" style="-fx-background-color: darkgray;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TaskBarController" >
    <children>
-      <Label fx:id="textDebug" layoutX="160.0" layoutY="16.0" prefHeight="21.0" prefWidth="139.0" text="Empty TaskBar" />
-      <ImageView fx:id="ImageStartWindow" fitHeight="31.0" fitWidth="34.0" layoutX="4.0" layoutY="8.0" onMouseClicked="#mouseClicked" pickOnBounds="true">
-         <image>
-            <Image url="https://winaero.com/blog/wp-content/uploads/2020/12/Windows-logo-icon-256-2020-3.png" />
-         </image></ImageView>
+      <BorderPane layoutX="-1.0" layoutY="-1.0" prefHeight="46.0" prefWidth="600.0">
+         <left>
+            <ImageView fitHeight="44.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="https://i.redd.it/ne6ukkej06t71.png" />
+               </image></ImageView>
+         </left>
+         <center>
+            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+         <right>
+            <Pane prefHeight="46.0" prefWidth="83.0" BorderPane.alignment="CENTER" />
+         </right>
+      </BorderPane>
    </children>
 </AnchorPane>

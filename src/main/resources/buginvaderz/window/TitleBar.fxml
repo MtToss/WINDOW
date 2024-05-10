@@ -3,9 +3,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="36.0" prefWidth="600.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TitleBarController">
-   <children>
-      <Button fx:id="minimizeButton" layoutX="465.0" layoutY="6.0" mnemonicParsing="false" onAction="#minimizeButton" prefHeight="25.0" prefWidth="32.0" text="-" />
-      <Button fx:id="closeButton" layoutX="532.0" layoutY="6.0" mnemonicParsing="false" onAction="#closeButton" prefHeight="25.0" prefWidth="32.0" text="X" />
-   </children>
-</AnchorPane>
+<BorderPane fx:id="titBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onDragDetected="#minimizeButton" prefHeight="27.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TitleBarController">
+   <right>
+      <HBox prefHeight="39.0" prefWidth="68.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="minimizeButton" mnemonicParsing="false" onAction="#minimizeButton" text="-" />
+            <Button mnemonicParsing="false" text="o" />
+            <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeButton" text="X" />
+         </children>
+      </HBox>
+   </right>
+</BorderPane>

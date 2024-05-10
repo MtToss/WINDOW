@@ -34,29 +34,34 @@ public class IconTemplate {
 
     public void openIcon() {
         try {
-            System.out.println("STILL");
-            TitleBarController titleBarController = new TitleBarController();
-
-            Parent titleBar = FXMLLoader.load(getClass().getResource("TitleBar.fxml"));
-            System.out.println("naandito ba?");
-            Parent body = FXMLLoader.load(getClass().getResource(getFXML()));
-
-            System.out.println("STILL1");
             BorderPane borderPane = new BorderPane();
+
+            FXMLLoader titleBarLoader = FXMLLoader.load(getClass().getResource("TitleBar.fxml"));
+            FXMLLoader bodyLoader = FXMLLoader.load(getClass().getResource(getFXML()));
+
+            TitleBarController titleBarController = new TitleBarController(borderPane);
+            titleBarLoader.setController(titleBarController);
+
+            Parent titleBar = titleBarLoader.load();
+            Parent body = bodyLoader.load();
 
             borderPane.setTop(titleBar);
             borderPane.setCenter(body);
 
-            System.out.println("STILL2");
             pane.getChildren().add(borderPane);
             borderPane.setLayoutX(350);
-            borderPane.setLayoutY(300);
-            System.out.println("STILL3");
+            borderPane.setLayoutY(50);
+
+            borderPane.setPrefSize(600.,400);
+
         }
         catch (IOException e) {
             e.printStackTrace();
+
         }
     }
+
+
 
     public Pane getIcon() {
         Pane iconPane = new Pane();

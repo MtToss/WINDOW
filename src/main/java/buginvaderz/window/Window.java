@@ -17,6 +17,7 @@ public class Window extends Application {
         try {
             BorderPane borderPane = new BorderPane();
 
+
             Parent taskBar = FXMLLoader.load(getClass().getResource("TaskBar.fxml"));
 
             Pane root = new Pane();

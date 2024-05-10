@@ -15,7 +15,7 @@ public class Window extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         try {
-            BorderPane borderPane = new BorderPane();
+            BorderPane windowBorderPane = new BorderPane();
 
 
             Parent taskBar = FXMLLoader.load(getClass().getResource("TaskBar.fxml"));
@@ -28,10 +28,10 @@ public class Window extends Application {
             root.getChildren().add(icon1.getIcon());
             root.getChildren().add(icon2.getIcon());
 
-            borderPane.setBottom(taskBar);
-            borderPane.setCenter(root);
+            windowBorderPane.setBottom(taskBar);
+            windowBorderPane.setCenter(root);
 
-            Scene scene = new Scene(borderPane);
+            Scene scene = new Scene(windowBorderPane);
 
             primaryStage.setMaximized(true);
             primaryStage.setScene(scene);

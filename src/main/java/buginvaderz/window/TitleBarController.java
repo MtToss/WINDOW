@@ -25,6 +25,7 @@ public class TitleBarController {
     }
 
     public void setMainPane(BorderPane pane) {
+
         this.titBar = pane;
     }
 

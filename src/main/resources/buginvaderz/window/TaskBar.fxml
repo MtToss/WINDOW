@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="28.0" prefWidth="600.0" style="-fx-background-color: green" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TaskBarController">
+<AnchorPane prefHeight="8.0" prefWidth="587.0" style="-fx-background-color: darkgrey" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TaskBarController">
    <children>
-      <Label layoutX="99.0" layoutY="6.0" prefHeight="17.0" prefWidth="161.0" text="Empty TaskBar" />
+      <Label fx:id="textDebug" layoutX="160.0" layoutY="16.0" prefHeight="21.0" prefWidth="139.0" text="Empty TaskBar" />
+      <ImageView fx:id="ImageStartWindow" fitHeight="31.0" fitWidth="34.0" layoutX="4.0" layoutY="8.0" onMouseClicked="#mouseClicked" pickOnBounds="true">
+         <image>
+            <Image url="https://winaero.com/blog/wp-content/uploads/2020/12/Windows-logo-icon-256-2020-3.png" />
+         </image></ImageView>
    </children>
 </AnchorPane>

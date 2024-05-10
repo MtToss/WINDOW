@@ -13,7 +13,7 @@
                </image></ImageView>
          </left>
          <center>
-            <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+            <HBox prefHeight="100.0" prefWidth="2000.0" BorderPane.alignment="CENTER" />
          </center>
          <right>
             <Pane prefHeight="46.0" prefWidth="83.0" BorderPane.alignment="CENTER" />

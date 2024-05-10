@@ -15,7 +15,7 @@ public class Window extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            buginvaderz.window.Application app = buginvaderz.window.Application.getInstance(); //subtype ni chatgpt kasi potangina masyadong one liner
+            buginvaderz.window.Application app = buginvaderz.window.Application.getInstance(); //subtype ni chatgpt kasi potangina mas
             BorderPane windowBorderPane = app.getMainWindow(); //subtyping ko
 
             Parent taskBar = FXMLLoader.load(getClass().getResource("TaskBar.fxml"));

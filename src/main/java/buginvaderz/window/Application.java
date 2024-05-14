@@ -6,12 +6,15 @@ public class Application {
     private static Application instance;
     protected BorderPane mainWindow = new BorderPane();
 
-    private Application() {}
+    private Application() {
+
+    }
 
     public static Application getInstance() {
         if(instance == null) {
             instance = new Application();
         }
+
         return instance;
     }
 
@@ -19,7 +22,5 @@ public class Application {
         return mainWindow;
     }
 
-    public void setVisible(boolean b) {
-        mainWindow.setVisible(b);
-    }
+
 }

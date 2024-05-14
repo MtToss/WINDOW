@@ -15,7 +15,7 @@ public class Taskbar {
 
     public void updateOrder(){
         for(IconTemplate sa:array){
-            //ADD THE ICON TEMPLATE TO THE TASKBAR
+
         }
     }
 

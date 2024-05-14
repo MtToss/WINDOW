@@ -22,12 +22,15 @@ public class TitleBarController {
         titBar.getChildren().clear();
     }
 
-    public void setMainPane(BorderPane pane) {
-        this.titBar = pane;
-
+    @FXML
+    public void moveWindow() {
+        System.out.println(titBar.getParent().getScene().getWidth());
+        System.out.println(titBar.getParent().getScene().getHeight());
+        // Get the size of the Application and the Window
+        // Get the X and Y value for moving the pane
     }
 
-
-
-
+    public void setMainPane(BorderPane pane) {
+        this.titBar = pane;
+    }
 }

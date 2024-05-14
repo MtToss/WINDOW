@@ -33,6 +33,9 @@ public class IconTemplate {
         iconPane.getChildren().addAll(nameLabel);
     }
 
+    // To be revised:
+    // Should just initialize the Application.
+    // Move the openIcon() functions to Application.
     public void openIcon() {
         try {
             FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
@@ -59,7 +62,7 @@ public class IconTemplate {
     }
 
     public Pane getIcon() {
-        Image image = new Image(imagePath);
+        Image image = new Image(getClass().getResourceAsStream(imagePath));
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(50);
         imageView.setFitHeight(50);

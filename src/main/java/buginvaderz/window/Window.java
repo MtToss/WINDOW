@@ -16,8 +16,8 @@ public class Window extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            buginvaderz.window.Application app = buginvaderz.window.Application.getInstance(); //subtype ni chatgpt kasi potangina mas
-            BorderPane windowBorderPane = app.getMainWindow(); //subtyping ko
+            buginvaderz.window.Application app = buginvaderz.window.Application.getInstance();
+            BorderPane windowBorderPane = app.getMainWindow();
 
             Parent taskBar = FXMLLoader.load(getClass().getResource("TaskBar.fxml"));
 
@@ -25,7 +25,7 @@ public class Window extends Application {
 
             // To be revised:
             // Make the path dynamic.
-            IconTemplate icon1 = new IconTemplate("Jabii", "StartWindowIcon.png", 25, 25, "IDE.fxml", root);
+            IconTemplate icon1 = new IconTemplate("Jabii", "https://www.developer.com/wp-content/uploads/2021/09/Java-tutorials.jpg", 25, 25, "IDE.fxml", root);
             IconTemplate icon2 = new IconTemplate("Spuuchify", "https://static-00.iconduck.com/assets.00/spotify-icon-512x511-5p0rqbu1.png", 25, 100, "IDE.fxml", root);
             root.getChildren().add(icon1.getIcon());
             root.getChildren().add(icon2.getIcon());

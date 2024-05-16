@@ -37,32 +37,14 @@ public class IconTemplate {
     // Should just initialize the Application.
     // Move the openIcon() functions to Application.
     public void openIcon() {
-        try {
-            FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
-            Parent titleBarRoot = titleBarLoader.load();
-            TitleBarController titleBarController = titleBarLoader.getController();
 
-            FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
-            Parent bodyRoot = bodyLoader.load();
 
-            borderPane.setTop(titleBarRoot);
-            borderPane.setCenter(bodyRoot);
-
-            titleBarController.setMainPane(borderPane);
-
-            pane.getChildren().add(borderPane);
-            borderPane.setLayoutX(350);
-            borderPane.setLayoutY(50);
-
-            borderPane.setPrefSize(600., 400);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public Pane getIcon() {
-        Image image = new Image(getClass().getResourceAsStream(imagePath));
+
+        Image image;
+        image = new Image(imagePath);
         ImageView imageView = new ImageView(image);
         imageView.setFitWidth(50);
         imageView.setFitHeight(50);
@@ -73,7 +55,7 @@ public class IconTemplate {
         iconPane.setOnMouseClicked(event -> {
             try {
                 System.out.println("OPENING");
-                openIcon();
+                Application app = new Application(iconName, imagePath, fxmlLoader, pane, borderPane);
                 System.out.println("SPECIFIC ICON JUST BEEN OPENED");
             } catch (Exception e) {
                 throw new RuntimeException(e);

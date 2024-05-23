@@ -1,16 +1,14 @@
 package buginvaderz.window;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-import java.io.IOException;
 
-public class IconTemplate {
+public class IconTemplate extends Pane {
     private BorderPane borderPane = new BorderPane();
     private Pane iconPane = new Pane();
     private String iconName;
@@ -31,14 +29,8 @@ public class IconTemplate {
         nameLabel.setLayoutX(getX());
         nameLabel.setLayoutY(getY() + 50);
         iconPane.getChildren().addAll(nameLabel);
-    }
 
-    // To be revised:
-    // Should just initialize the Application.
-    // Move the openIcon() functions to Application.
-    public void openIcon() {
-
-
+        mouseClicked();
     }
 
     public Pane getIcon() {
@@ -52,17 +44,20 @@ public class IconTemplate {
         imageView.setY(getY());
         iconPane.getChildren().addAll(imageView);
 
+        return iconPane;
+    }
+
+    public void mouseClicked() {
+
         iconPane.setOnMouseClicked(event -> {
             try {
                 System.out.println("OPENING");
-                Application app = new Application(fxmlLoader,  pane, borderPane);
+                Application app = new Application(fxmlLoader, pane, borderPane);
                 System.out.println("SPECIFIC ICON JUST BEEN OPENED");
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         });
-
-        return iconPane;
     }
 
     public String getFXML() {

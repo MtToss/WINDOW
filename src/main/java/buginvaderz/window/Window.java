@@ -1,12 +1,9 @@
 package buginvaderz.window;
 
-
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -19,18 +16,21 @@ public class Window extends Application {
             buginvaderz.window.Application app = buginvaderz.window.Application.getInstance();
             BorderPane windowBorderPane = app.getMainWindow();
 
-            Parent taskBar = FXMLLoader.load(getClass().getResource("TaskBar.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("TaskBar.fxml"));
+            Parent taskBar = loader.load();
+            //TaskBarController taskBarController = loader.getController();
+
+            windowBorderPane.setBottom(taskBar);
+
 
             Pane root = new Pane();
-
-            // To be revised:
-            // Make the path dynamic.
             IconTemplate icon1 = new IconTemplate("Jabii", "https://www.developer.com/wp-content/uploads/2021/09/Java-tutorials.jpg", 25, 25, "IDE.fxml", root);
             IconTemplate icon2 = new IconTemplate("Spuuchify", "https://static-00.iconduck.com/assets.00/spotify-icon-512x511-5p0rqbu1.png", 25, 100, "IDE.fxml", root);
+
             root.getChildren().add(icon1.getIcon());
             root.getChildren().add(icon2.getIcon());
 
-            windowBorderPane.setBottom(taskBar);
+
             windowBorderPane.setCenter(root);
 
             Scene scene = new Scene(windowBorderPane);
@@ -43,5 +43,9 @@ public class Window extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

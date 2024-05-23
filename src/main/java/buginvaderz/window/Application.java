@@ -21,9 +21,8 @@ public class Application {
 
     }
 
-    public Application(String iconName, String imagePath, String fxmlLoader, Pane pane, BorderPane borderPane) {
-        this.iconName = iconName;
-        this.imagePath = imagePath;
+    public Application( String fxmlLoader, Pane pane, BorderPane borderPane) {
+
         this.fxmlLoader = fxmlLoader;
         this.pane = pane;
         this.borderPane = borderPane;

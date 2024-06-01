@@ -8,6 +8,7 @@ public class TaskBarController {
     @FXML
     private HBox hboxContainer = new HBox();
 
+
     public void initialize() {
     }
 

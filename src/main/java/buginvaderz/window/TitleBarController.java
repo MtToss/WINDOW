@@ -1,36 +1,53 @@
-package buginvaderz.window;
+    package buginvaderz.window;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
+    import javafx.fxml.FXML;
+    import javafx.geometry.Rectangle2D;
+    import javafx.scene.control.Button;
+    import javafx.scene.layout.BorderPane;
+    import javafx.stage.Screen;
+    import javafx.stage.Stage;
 
-public class TitleBarController {
+    public class TitleBarController {
 
-    public BorderPane titBar;
-    public Button minimizeButton;
+        public BorderPane titBar;
+        public Button minimizeButton;
+        private IDEController ide = new IDEController();
 
-    @FXML
-    public void minimizeButton() {
+        boolean isMaximized = true;
 
-        System.out.println("HAI");
-        titBar.setVisible(false);
 
+        @FXML
+        public void handleMinimizeButton() {
+            titBar.setVisible(false);
+        }
+
+        @FXML
+        public void handleCloseButton() {
+            titBar.setVisible(false);
+        }
+
+        @FXML
+        public void handleMoveWindow() {
+            System.out.println(titBar.getParent().getScene().getWidth());
+            System.out.println(titBar.getParent().getScene().getHeight());
+        }
+
+        @FXML
+        public void handleMaximizeButton() {
+
+            if (isMaximized) {
+
+                ide.getSizeWidthHeight(700, 700);
+                isMaximized = false;
+            } else {
+
+                ide.getSizeWidthHeight(300,300);
+                isMaximized = true;
+            }
+            System.out.println(isMaximized);
+        }
+
+        public void setMainPane(BorderPane pane) {
+            this.titBar = pane;
+        }
     }
-
-    @FXML
-    public void closeButton() {
-        titBar.getChildren().clear();
-    }
-
-    @FXML
-    public void moveWindow() {
-        System.out.println(titBar.getParent().getScene().getWidth());
-        System.out.println(titBar.getParent().getScene().getHeight());
-        // Get the size of the Application and the Window
-        // Get the X and Y value for moving the pane
-    }
-
-    public void setMainPane(BorderPane pane) {
-        this.titBar = pane;
-    }
-}

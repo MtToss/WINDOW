@@ -2,8 +2,10 @@
 
     import javafx.fxml.FXMLLoader;
     import javafx.scene.Parent;
+    import javafx.scene.layout.Background;
     import javafx.scene.layout.BorderPane;
     import javafx.scene.layout.Pane;
+    import javafx.scene.paint.Color;
 
     import java.io.IOException;
 
@@ -28,28 +30,26 @@
                 FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
                 Parent titleBarRoot = titleBarLoader.load();
                 titleBarRoot.isResizable();
-
-                TitleBarController titleBarController = titleBarLoader.getController();
                 Pane titleBarPane = new Pane(titleBarRoot);
 
                 new Drag(borderPane, rootPane);
 
                 FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
                 Parent bodyRoot = bodyLoader.load();
+                System.out.println(bodyRoot);
                 bodyRoot.isResizable();
+                Pane bodyPane = new Pane(bodyRoot);
 
-                borderPane.setTop(titleBarRoot);
-                borderPane.setCenter(bodyRoot);
+                borderPane.setTop(titleBarPane);
+                borderPane.setCenter(bodyPane);
 
-                titleBarController.setMainPane(borderPane);
 
                 pane.getChildren().add(borderPane);
 
-                borderPane.setLayoutX(350);
-                borderPane.setLayoutY(300);
+                borderPane.setLayoutX(0);
+                borderPane.setLayoutY(0);
 
-                borderPane.setPrefSize(600,500);
-
+                borderPane.setBackground(Background.fill(Color.VIOLET));
             } catch (IOException e) {
                 e.printStackTrace();
             }

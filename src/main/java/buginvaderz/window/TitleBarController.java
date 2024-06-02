@@ -2,8 +2,10 @@ package buginvaderz.window;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
@@ -12,18 +14,43 @@ import java.io.IOException;
 public class TitleBarController {
 
     @FXML
-    private BorderPane titBar;
+    private BorderPane titBar = new BorderPane();
 
     @FXML
     private Button minimizeButton;
 
     @FXML
-    Pane ide = new Pane(); // sa ide fxml
+    private AnchorPane ide = new AnchorPane();
 
     @FXML
-    Label label = new Label(); // sa ide fxml
+    Label label = new Label();
 
     private boolean isMaximized = true;
+    private boolean isPanelMaximized = true;
+
+    @FXML
+    public void initialize() {
+
+        if (isPanelMaximized) {
+            ide.setPrefSize(800, 800);
+            isPanelMaximized = false;
+        }
+        else {
+            ide.setPrefSize(200, 200);
+            isPanelMaximized = true;
+        }
+        System.out.println(ide);
+
+
+        if (isMaximized) {
+            titBar.setPrefSize(500, 25);
+        }
+        else {
+            titBar.setPrefSize(200, 25);
+        }
+
+    }
+
 
     @FXML
     public void handleMinimizeButton() {
@@ -36,17 +63,15 @@ public class TitleBarController {
     }
 
     @FXML
-    public void handleMaximizeButton() {
+    public boolean isMax() {
         if (isMaximized) {
-            ide.setPrefSize(700, 700);
-            label.setText("Maximized");
             isMaximized = false;
-        } else {
-            ide.setPrefSize(300, 300);
-            label.setText("Minimized");
+        }
+        else {
             isMaximized = true;
         }
-        System.out.println(isMaximized);
+        initialize();
+        return isMaximized;
     }
 
     public void setMainPane(BorderPane pane) {

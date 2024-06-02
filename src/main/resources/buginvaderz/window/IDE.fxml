@@ -3,8 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane fx:id="ide" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#handleMaximizeButton" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TitleBarController">
+
+<AnchorPane fx:id="ide" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: GREEN;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TitleBarController">
    <children>
-      <Label fx:id="label" layoutX="272.0" layoutY="146.0" text="Label" />
+      <Label fx:id="label" layoutX="216.0" layoutY="111.0" text="Label" />
    </children>
-</Pane>
+</AnchorPane>

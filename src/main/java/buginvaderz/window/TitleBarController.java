@@ -1,53 +1,55 @@
-    package buginvaderz.window;
+package buginvaderz.window;
 
-    import javafx.fxml.FXML;
-    import javafx.geometry.Rectangle2D;
-    import javafx.scene.control.Button;
-    import javafx.scene.layout.BorderPane;
-    import javafx.stage.Screen;
-    import javafx.stage.Stage;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
-    public class TitleBarController {
+import java.io.IOException;
 
-        public BorderPane titBar;
-        public Button minimizeButton;
-        private IDEController ide = new IDEController();
+public class TitleBarController {
 
-        boolean isMaximized = true;
+    @FXML
+    private BorderPane titBar;
 
+    @FXML
+    private Button minimizeButton;
 
-        @FXML
-        public void handleMinimizeButton() {
-            titBar.setVisible(false);
-        }
+    @FXML
+    Pane ide = new Pane(); // sa ide fxml
 
-        @FXML
-        public void handleCloseButton() {
-            titBar.setVisible(false);
-        }
+    @FXML
+    Label label = new Label(); // sa ide fxml
 
-        @FXML
-        public void handleMoveWindow() {
-            System.out.println(titBar.getParent().getScene().getWidth());
-            System.out.println(titBar.getParent().getScene().getHeight());
-        }
+    private boolean isMaximized = true;
 
-        @FXML
-        public void handleMaximizeButton() {
-
-            if (isMaximized) {
-
-                ide.getSizeWidthHeight(700, 700);
-                isMaximized = false;
-            } else {
-
-                ide.getSizeWidthHeight(300,300);
-                isMaximized = true;
-            }
-            System.out.println(isMaximized);
-        }
-
-        public void setMainPane(BorderPane pane) {
-            this.titBar = pane;
-        }
+    @FXML
+    public void handleMinimizeButton() {
+        titBar.setVisible(false);
     }
+
+    @FXML
+    public void handleCloseButton() {
+        titBar.setVisible(false);
+    }
+
+    @FXML
+    public void handleMaximizeButton() {
+        if (isMaximized) {
+            ide.setPrefSize(700, 700);
+            label.setText("Maximized");
+            isMaximized = false;
+        } else {
+            ide.setPrefSize(300, 300);
+            label.setText("Minimized");
+            isMaximized = true;
+        }
+        System.out.println(isMaximized);
+    }
+
+    public void setMainPane(BorderPane pane) {
+        this.titBar = pane;
+    }
+}

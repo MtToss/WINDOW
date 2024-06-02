@@ -34,10 +34,12 @@ public class TitleBarController {
         if (isPanelMaximized) {
             ide.setPrefSize(800, 800);
             isPanelMaximized = false;
+            System.out.println(isPanelMaximized);
         }
         else {
             ide.setPrefSize(200, 200);
             isPanelMaximized = true;
+            System.out.println(isPanelMaximized);
         }
         System.out.println(ide);
 
@@ -60,6 +62,7 @@ public class TitleBarController {
     @FXML
     public void handleCloseButton() {
         titBar.setVisible(false);
+
     }
 
     @FXML

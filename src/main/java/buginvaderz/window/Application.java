@@ -36,7 +36,7 @@
 
                 FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
                 Parent bodyRoot = bodyLoader.load();
-                System.out.println(bodyRoot);
+                System.out.println(bodyRoot); //here
                 bodyRoot.isResizable();
                 Pane bodyPane = new Pane(bodyRoot);
 

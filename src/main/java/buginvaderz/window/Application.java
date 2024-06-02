@@ -27,18 +27,22 @@
             this.borderPane = borderPane;
 
             try {
+                FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
+                Parent bodyRoot = bodyLoader.load();
+                System.out.println(bodyRoot); //here
+                bodyRoot.isResizable();
+                Pane bodyPane = new Pane(bodyRoot);
+
                 FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
+                TitleBarController controller = titleBarLoader.getController();
+                controller.setIdePane(bodyPane);
                 Parent titleBarRoot = titleBarLoader.load();
                 titleBarRoot.isResizable();
                 Pane titleBarPane = new Pane(titleBarRoot);
 
                 new Drag(borderPane, rootPane);
 
-                FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
-                Parent bodyRoot = bodyLoader.load();
-                System.out.println(bodyRoot); //here
-                bodyRoot.isResizable();
-                Pane bodyPane = new Pane(bodyRoot);
+
 
                 borderPane.setTop(titleBarPane);
                 borderPane.setCenter(bodyPane);

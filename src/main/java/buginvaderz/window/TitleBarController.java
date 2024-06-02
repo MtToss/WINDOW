@@ -19,8 +19,7 @@ public class TitleBarController {
     @FXML
     private Button minimizeButton;
 
-    @FXML
-    private AnchorPane ide = new AnchorPane();
+    private Pane ide;
 
     @FXML
     Label label = new Label();
@@ -75,6 +74,9 @@ public class TitleBarController {
         }
         initialize();
         return isMaximized;
+    }
+    public void setIdePane(Pane ide) {
+        this.ide = ide;
     }
 
     public void setMainPane(BorderPane pane) {

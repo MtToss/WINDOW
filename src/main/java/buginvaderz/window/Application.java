@@ -34,9 +34,9 @@
                 Pane bodyPane = new Pane(bodyRoot);
 
                 FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
+                Parent titleBarRoot = titleBarLoader.load();
                 TitleBarController controller = titleBarLoader.getController();
                 controller.setIdePane(bodyPane);
-                Parent titleBarRoot = titleBarLoader.load();
                 titleBarRoot.isResizable();
                 Pane titleBarPane = new Pane(titleBarRoot);
 

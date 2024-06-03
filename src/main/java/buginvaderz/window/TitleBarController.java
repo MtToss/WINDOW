@@ -19,12 +19,13 @@ public class TitleBarController {
     @FXML
     private Button minimizeButton;
 
+    @FXML
     private Pane ide;
 
     @FXML
     Label label = new Label();
 
-    private boolean isMaximized = true;
+    private boolean isMaximized = false;
 
     @FXML
     public void handleMinimizeButton() {
@@ -38,19 +39,26 @@ public class TitleBarController {
     }
 
     @FXML
+    public void initialize() {
+        //System.out.println(ide);
+
+    }
+
+    @FXML
     public void isMax() {
         if (isMaximized) {
-            ide.setPrefSize(200, 200);
-            titBar.setPrefSize(200, 25);
+
+            ide.setPrefSize(500, 500);
+            titBar.setPrefSize(500, 25);
             isMaximized = false;
         }
         else {
-            ide.setPrefSize(800, 800);
-            titBar.setPrefSize(500, 25);
+            ide.setPrefSize(600, 600);
+            titBar.setPrefSize(600, 25);
             isMaximized = true;
         }
     }
-    public void setIdePane(Pane ide) {
+    public void setIdePane(AnchorPane ide) {
         this.ide = ide;
     }
 

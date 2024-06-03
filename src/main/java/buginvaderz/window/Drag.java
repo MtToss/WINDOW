@@ -18,6 +18,8 @@ public class Drag {
 
     private void onMouseDragged(MouseEvent e) {
         Parent parent = (Parent) e.getSource();
+
+
         double newX = e.getSceneX() - mouseX;
         double newY = e.getSceneY() - mouseY;
 

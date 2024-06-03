@@ -2,6 +2,7 @@
 
     import javafx.fxml.FXMLLoader;
     import javafx.scene.Parent;
+    import javafx.scene.layout.AnchorPane;
     import javafx.scene.layout.Background;
     import javafx.scene.layout.BorderPane;
     import javafx.scene.layout.Pane;
@@ -28,15 +29,15 @@
 
             try {
                 FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
-                Parent bodyRoot = bodyLoader.load();
-                System.out.println(bodyRoot); //here
+                AnchorPane bodyRoot = bodyLoader.load();
+                //System.out.println(bodyRoot); //here
                 bodyRoot.isResizable();
                 Pane bodyPane = new Pane(bodyRoot);
 
                 FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
                 Parent titleBarRoot = titleBarLoader.load();
                 TitleBarController controller = titleBarLoader.getController();
-                controller.setIdePane(bodyPane);
+                controller.setIdePane(bodyRoot);
                 titleBarRoot.isResizable();
                 Pane titleBarPane = new Pane(titleBarRoot);
 
@@ -53,7 +54,7 @@
                 borderPane.setLayoutX(0);
                 borderPane.setLayoutY(0);
 
-                borderPane.setBackground(Background.fill(Color.VIOLET));
+                borderPane.setBackground(Background.fill(Color.YELLOW));
             } catch (IOException e) {
                 e.printStackTrace();
             }

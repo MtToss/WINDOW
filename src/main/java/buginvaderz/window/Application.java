@@ -22,10 +22,10 @@
 
         }
 
-        public Application(String fxmlLoader, Pane pane, BorderPane borderPane, Pane rootPane) {
+        public Application(String fxmlLoader, BorderPane borderPane, Pane rootPane) {
             this.fxmlLoader = fxmlLoader;
-            this.pane = pane;
             this.borderPane = borderPane;
+            this.pane = rootPane;
 
             try {
                 FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
@@ -37,26 +37,24 @@
                 FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
                 Parent titleBarRoot = titleBarLoader.load();
                 TitleBarController controller = titleBarLoader.getController();
+                controller.setRoot(rootPane);
                 controller.setIdePane(bodyRoot);
+                controller.setMainApplicationPane(borderPane);
                 titleBarRoot.isResizable();
                 Pane titleBarPane = new Pane(titleBarRoot);
 
                 new Drag(borderPane, rootPane);
 
-
-
                 borderPane.setTop(titleBarPane);
                 borderPane.setCenter(bodyPane);
 
+                rootPane.getChildren().add(borderPane);
 
-                pane.getChildren().add(borderPane);
+                borderPane.setLayoutX(35);
+                borderPane.setLayoutY(35);
 
-                borderPane.setLayoutX(0);
-                borderPane.setLayoutY(0);
-
-                borderPane.setBackground(Background.fill(Color.YELLOW));
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Application Error: " + e.getMessage()); e.printStackTrace();
             }
         }
 

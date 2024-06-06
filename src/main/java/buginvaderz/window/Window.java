@@ -1,6 +1,7 @@
 package buginvaderz.window;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,26 +24,27 @@ public class Window extends Application {
             windowBorderPane.setBottom(taskBar);
 
             Pane root = new Pane();
+
             root.setBackground(Background.fill(Color.AQUAMARINE));
-            root.setMaxSize(1550,745);
             IconTemplate icon1 = new IconTemplate("Jabii", "https://www.developer.com/wp-content/uploads/2021/09/Java-tutorials.jpg", 25, 25, "IDE.fxml", root);
-            IconTemplate icon2 = new IconTemplate("Spuuchify", "https://static-00.iconduck.com/assets.00/spotify-icon-512x511-5p0rqbu1.png", 25, 100, "IDE.fxml", root);
+            IconTemplate icon2 = new IconTemplate("Spuuchify", "https://static-00.iconduck.com/assets.00/spotify-icon-512x511-5p0rqbu1.png", 25, 100, "Spuuchify.fxml", root);
+
 
             root.getChildren().add(icon1.getIcon());
             root.getChildren().add(icon2.getIcon());
-
             windowBorderPane.setCenter(root);
-            //windowBorderPane.setBackground(Background.fill(Color.AQUAMARINE));
+
 
             Scene scene = new Scene(windowBorderPane);
 
             primaryStage.setMaximized(true);
             primaryStage.setScene(scene);
+            primaryStage.setFullScreen(true);
             primaryStage.setTitle("Bug Invaderz");
             primaryStage.show();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Window Error: " + e.getMessage()); e.printStackTrace();
         }
     }
 

@@ -5,7 +5,7 @@
 
 <!-- OnDragDetected to be added for dragging -->
 
-<BorderPane fx:id="titBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TitleBarController">
+<BorderPane fx:id="titBar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="1350.4" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TitleBarController">
    <right>
       <HBox prefHeight="27.0" prefWidth="70.0" spacing="5.0" BorderPane.alignment="CENTER">
          <children>

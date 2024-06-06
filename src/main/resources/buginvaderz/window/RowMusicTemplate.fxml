@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane fx:id="mainSpuuchifyWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane layoutX="-3.0" prefHeight="65.0" prefWidth="1358.0" style="-fx-background-color: #192227;">
+         <left>
+            <Pane prefHeight="66.0" prefWidth="376.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="imageId" fitHeight="47.0" fitWidth="61.0" layoutX="14.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/rectangle.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="songId" layoutX="79.0" layoutY="10.0" text="Song Name" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="artistId" layoutX="79.0" layoutY="37.0" text="Artist Name" textFill="WHITE" />
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <Label fx:id="albumId" text="Album Name" textFill="#fcfcfc" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </center>
+         <right>
+            <Pane prefHeight="66.0" prefWidth="379.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="284.0" layoutY="24.0" text="12:00" textFill="WHITE" />
+               </children>
+            </Pane>
+         </right>
+      </BorderPane>
+   </children>
+</Pane>

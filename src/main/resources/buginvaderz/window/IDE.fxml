@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="ide" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: GREEN;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TitleBarController">
+<AnchorPane fx:id="ide" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.4" prefWidth="1350.4" style="-fx-background-color: GREEN;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TitleBarController">
    <children>
       <Label fx:id="label" layoutX="216.0" layoutY="111.0" prefHeight="18.0" prefWidth="0.0" />
    </children>

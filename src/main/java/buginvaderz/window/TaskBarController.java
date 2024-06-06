@@ -13,6 +13,7 @@ public class TaskBarController {
     }
 
     public void addIcon(Pane iconPane) {
+
         hboxContainer.getChildren().add(iconPane);
     }
 }

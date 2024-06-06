@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane fx:id="mainPaneSpuuchify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.4" prefWidth="1350.4" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TitleBarController">
+   <children>
+      <BorderPane prefHeight="546.4" prefWidth="1350.4">
+         <center>
+            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="221.0" prefWidth="1350.0" BorderPane.alignment="CENTER">
+               <content>
+                  <VBox fx:id="spotifyContainer" prefHeight="200.0" prefWidth="1348.0" />
+               </content>
+            </ScrollPane>
+         </center>
+         <top>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #192227;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="195.0" fitWidth="980.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/backgroundSpotifyAlbum.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="21.0" layoutY="126.0" text="Bug Invaderz Playlist" textFill="WHITE">
+                     <font>
+                        <Font name="Impact" size="48.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </top>
+         <bottom>
+            <Pane prefHeight="110.0" prefWidth="1350.0" style="-fx-background-color: #192227;" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

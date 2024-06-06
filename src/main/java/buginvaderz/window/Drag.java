@@ -14,8 +14,6 @@ public class Drag {
         parent.setOnMouseDragged(this::onMouseDragged);
     }
 
-
-
     private void onMouseDragged(MouseEvent e) {
         Parent parent = (Parent) e.getSource();
 

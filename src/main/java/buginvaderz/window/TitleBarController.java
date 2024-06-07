@@ -1,17 +1,9 @@
 package buginvaderz.window;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-
-import java.io.IOException;
+import javafx.scene.layout.*;
 
 public class TitleBarController {
 
@@ -20,13 +12,13 @@ public class TitleBarController {
     Pane root = new Pane();
 
     @FXML
-    private Pane mainPaneSpuuchify;
+    private AnchorPane mainPaneSpuuchify;
 
     @FXML
     private BorderPane titBar = new BorderPane();
 
     @FXML
-    private Button minimizeButton;
+    private VBox spotifyContainer = new VBox();
 
     @FXML
     private Pane ide;
@@ -49,6 +41,12 @@ public class TitleBarController {
 
     @FXML
     public void initialize() {
+        root.widthProperty().addListener((obs, oldVal, newVal) -> isMax());
+        root.heightProperty().addListener((obs, oldVal, newVal) -> isMax());
+
+        RowMusicTemplate music1 = new RowMusicTemplate("https://i.kym-cdn.com/photos/images/newsfeed/001/065/439/e9e.jpegg", "Backburner", "Niki", "OCEANS", "1:00" , "audioIncap");
+
+        spotifyContainer.getChildren().add(music1);
 
     }
 
@@ -57,17 +55,40 @@ public class TitleBarController {
 
             if (isMaximized) {
                 mainPaneSpuuchify.setPrefSize(root.getWidth()-15, root.getHeight()-26);
+
                 ide.setPrefSize(root.getWidth() - 15, root.getHeight() - 26);
+
                 titBar.setPrefSize(root.getWidth() - 15, 25);
+
                 mainApplicationPane.setLayoutX(1); mainApplicationPane.setLayoutY(1);
                 isMaximized = false;
+
+                for (Node child : mainPaneSpuuchify.getChildren()) {
+                    if (child instanceof Pane) {
+                        Pane pane = (Pane) child;
+                        pane.prefWidthProperty().bind(mainPaneSpuuchify.widthProperty());
+                        pane.prefHeightProperty().bind(mainPaneSpuuchify.heightProperty());
+                    }
+                }
+
             }
             else {
-                mainPaneSpuuchify.setPrefSize(root.getWidth()-200, root.getHeight()-200);
+                mainPaneSpuuchify.setPrefSize(root.getWidth() - 200, root.getHeight() - 200);
+
                 ide.setPrefSize(root.getWidth() - 200, root.getHeight() - 200);
                 titBar.setPrefSize(root.getWidth() - 200, 25);
-                mainApplicationPane.setLayoutX(35); mainApplicationPane.setLayoutY(35);
+
+                mainApplicationPane.setLayoutX(35);
+                mainApplicationPane.setLayoutY(35);
                 isMaximized = true;
+
+                for (Node child : mainPaneSpuuchify.getChildren()) {
+                    if (child instanceof Pane) {
+                        Pane pane = (Pane) child;
+                        pane.prefWidthProperty().bind(mainPaneSpuuchify.widthProperty());
+                        pane.prefHeightProperty().bind(mainPaneSpuuchify.heightProperty().subtract(50)); // Adjust height according to your needs
+                    }
+                }
             }
 
     }

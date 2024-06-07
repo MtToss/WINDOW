@@ -26,7 +26,7 @@ public class Window extends Application {
             Pane root = new Pane();
 
             root.setBackground(Background.fill(Color.AQUAMARINE));
-            IconTemplate icon1 = new IconTemplate("Jabii", "https://www.developer.com/wp-content/uploads/2021/09/Java-tutorials.jpg", 25, 25, "IDE.fxml", root);
+            IconTemplate icon1 = new IconTemplate("Jabii", "https://www.developer.com/wp-content/uploads/2021/09/Java-tutorials.jpg", 25, 25, "Spuuchify.fxml", root);
             IconTemplate icon2 = new IconTemplate("Spuuchify", "https://static-00.iconduck.com/assets.00/spotify-icon-512x511-5p0rqbu1.png", 25, 100, "Spuuchify.fxml", root);
 
 

@@ -4,25 +4,24 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<?import javafx.scene.layout.AnchorPane?>
 <AnchorPane fx:id="mainPaneSpuuchify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.4" prefWidth="1350.4" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.TitleBarController">
    <children>
-      <BorderPane prefHeight="546.4" prefWidth="1350.4">
+      <BorderPane fx:id="container" prefHeight="546.4" prefWidth="1350.4" style="-fx-background-color: #192227;">
          <center>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="221.0" prefWidth="1350.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox fx:id="spotifyContainer" prefHeight="200.0" prefWidth="1348.0" />
+                  <VBox fx:id="spotifyContainer" prefHeight="258.0" prefWidth="1350.0" />
                </content>
             </ScrollPane>
          </center>
          <top>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #192227;" BorderPane.alignment="CENTER">
+            <Pane fx:id="headerSpuuchify" prefHeight="200.0" prefWidth="1350.4" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="195.0" fitWidth="980.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -38,7 +37,7 @@
             </Pane>
          </top>
          <bottom>
-            <Pane prefHeight="110.0" prefWidth="1350.0" style="-fx-background-color: #192227;" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="94.0" prefWidth="1350.0" style="-fx-background-color: #192227;" BorderPane.alignment="CENTER" />
          </bottom>
       </BorderPane>
    </children>

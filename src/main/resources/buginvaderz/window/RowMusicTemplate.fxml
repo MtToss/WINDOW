@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane fx:id="mainSpuuchifyWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="mainSpuuchifyWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="1350.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.RowMusicTemplate">
    <children>
       <BorderPane layoutX="-3.0" prefHeight="65.0" prefWidth="1358.0" style="-fx-background-color: #192227;">
          <left>
@@ -38,7 +37,7 @@
          <right>
             <Pane prefHeight="66.0" prefWidth="379.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="284.0" layoutY="24.0" text="12:00" textFill="WHITE" />
+                  <Label fx:id="timeLengthId" layoutX="284.0" layoutY="24.0" text="12:00" textFill="WHITE" />
                </children>
             </Pane>
          </right>

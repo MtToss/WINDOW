@@ -29,6 +29,7 @@
 
             try {
                 FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
+                System.out.println(getFXML());
                 AnchorPane bodyRoot = bodyLoader.load();
                 //System.out.println(bodyRoot); //here
                 bodyRoot.isResizable();

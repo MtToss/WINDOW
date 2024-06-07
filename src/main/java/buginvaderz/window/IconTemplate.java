@@ -52,6 +52,7 @@ public class IconTemplate extends Pane {
             try {
                 System.out.println("OPENING");
                 new Application(fxmlLoader, borderPane, pane);
+                System.out.println(fxmlLoader);
                 System.out.println("SPECIFIC ICON JUST BEEN OPENED");
             } catch (Exception e) {
                 System.out.println(e.getMessage());

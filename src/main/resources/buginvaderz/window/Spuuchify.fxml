@@ -16,19 +16,19 @@
          <center>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="221.0" prefWidth="1350.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox fx:id="spotifyContainer" prefHeight="258.0" prefWidth="1350.0" />
+                  <VBox fx:id="spotifyContainer" prefHeight="264.0" prefWidth="1349.0" />
                </content>
             </ScrollPane>
          </center>
          <top>
-            <Pane fx:id="headerSpuuchify" prefHeight="200.0" prefWidth="1350.4" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
+            <Pane fx:id="headerSpuuchify" prefHeight="168.0" prefWidth="1350.0" style="-fx-background-color: green;" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="195.0" fitWidth="980.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageViewer" fitHeight="198.0" fitWidth="1350.0" layoutX="1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@img/backgroundSpotifyAlbum.png" />
+                        <Image url="@img/BackgroundNature.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="21.0" layoutY="126.0" text="Bug Invaderz Playlist" textFill="WHITE">
+                  <Label layoutX="21.0" layoutY="94.0" text="Bug Invaderz Playlist" textFill="WHITE">
                      <font>
                         <Font name="Impact" size="48.0" />
                      </font>

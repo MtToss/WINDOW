@@ -2,11 +2,11 @@ package buginvaderz.window;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.scene.image.Image;
 
-public class RowMusicTemplate extends Pane {
+public class RowMusicTemplate extends Pane{
     @FXML
     ImageView imageId = new ImageView();
 
@@ -41,6 +41,7 @@ public class RowMusicTemplate extends Pane {
         this.audioString = audioString;
 
         setToInitialize();
+    
     }
 
 
@@ -49,7 +50,7 @@ public class RowMusicTemplate extends Pane {
         return audioString;
     }
 
-    public void setToInitialize() {
+    public Pane setToInitialize() {
         try {
             Image image = new Image(imageStringId);
             imageId.setImage(image);
@@ -58,10 +59,13 @@ public class RowMusicTemplate extends Pane {
             artistId.setText(artistStringId);
             albumId.setText(albumStringId);
             timeLengthId.setText(timeLengthStringId);
+            
+            getChildren().addAll(mainSpuuchifyWindow);
+
         } catch (Exception e) {
             System.err.println("Failed to load image: " + e.getMessage());
         }
-
+        return this;
 
 
 

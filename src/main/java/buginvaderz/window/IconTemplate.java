@@ -30,7 +30,7 @@ public class IconTemplate extends Pane {
         nameLabel.setLayoutY(getY() + 50);
         iconPane.getChildren().addAll(nameLabel);
 
-        mouseClicked();
+        
     }
 
     public Pane getIcon() {
@@ -43,7 +43,7 @@ public class IconTemplate extends Pane {
         imageView.setX(getX());
         imageView.setY(getY());
         iconPane.getChildren().addAll(imageView);
-
+        mouseClicked();
         return iconPane;
     }
 

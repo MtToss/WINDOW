@@ -34,12 +34,14 @@
                 //System.out.println(bodyRoot); //here
                 bodyRoot.isResizable();
                 Pane bodyPane = new Pane(bodyRoot);
+                System.out.println(bodyPane);
+                System.out.println(bodyPane.getId());
 
                 FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
                 Parent titleBarRoot = titleBarLoader.load();
                 TitleBarController controller = titleBarLoader.getController();
                 controller.setRoot(rootPane);
-                controller.setIdePane(bodyRoot);
+                controller.setMainPane(bodyPane);
                 controller.setMainApplicationPane(borderPane);
                 titleBarRoot.isResizable();
                 Pane titleBarPane = new Pane(titleBarRoot);

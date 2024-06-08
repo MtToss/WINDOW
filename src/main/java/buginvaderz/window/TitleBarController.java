@@ -43,8 +43,6 @@ public class TitleBarController {
         root.widthProperty().addListener((obs, oldVal, newVal) -> isMax());
         root.heightProperty().addListener((obs, oldVal, newVal) -> isMax());
 
-        
-
     }
 
     @FXML

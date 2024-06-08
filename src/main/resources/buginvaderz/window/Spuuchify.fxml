@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPaneSpuuchify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.4" prefWidth="1350.4" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.SpotifyController">
+<AnchorPane fx:id="mainPaneSpuuchify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.4" prefWidth="1350.4" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.SpuuchifyController">
    <children>
       <BorderPane fx:id="container" prefHeight="546.4" prefWidth="1350.4" style="-fx-background-color: #192227;">
          <center>

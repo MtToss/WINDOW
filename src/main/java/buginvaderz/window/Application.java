@@ -1,14 +1,12 @@
     package buginvaderz.window;
 
+    import java.io.IOException;
+
     import javafx.fxml.FXMLLoader;
     import javafx.scene.Parent;
     import javafx.scene.layout.AnchorPane;
-    import javafx.scene.layout.Background;
     import javafx.scene.layout.BorderPane;
     import javafx.scene.layout.Pane;
-    import javafx.scene.paint.Color;
-
-    import java.io.IOException;
 
     public class Application {
         private static Application instance;
@@ -29,13 +27,9 @@
 
             try {
                 FXMLLoader bodyLoader = new FXMLLoader(getClass().getResource(getFXML()));
-                System.out.println(getFXML());
                 AnchorPane bodyRoot = bodyLoader.load();
-                //System.out.println(bodyRoot); //here
                 bodyRoot.isResizable();
                 Pane bodyPane = new Pane(bodyRoot);
-                System.out.println(bodyPane);
-                System.out.println(bodyPane.getId());
 
                 FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
                 Parent titleBarRoot = titleBarLoader.load();
@@ -43,6 +37,12 @@
                 controller.setRoot(rootPane);
                 controller.setMainPane(bodyPane);
                 controller.setMainApplicationPane(borderPane);
+
+                // SpuuchifyController spuuchifyController = new FXMLLoader(getClass().getResource("Spuuchify.fxml")).getController();
+                // spuuchifyController.setRoot(rootPane);
+                // spuuchifyController.setMainPane(bodyPane);
+                // spuuchifyController.setMainApplicationPane(borderPane);
+
                 titleBarRoot.isResizable();
                 Pane titleBarPane = new Pane(titleBarRoot);
 

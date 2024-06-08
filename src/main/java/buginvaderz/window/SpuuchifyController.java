@@ -27,8 +27,10 @@ public class SpuuchifyController {
 
     @FXML
     public void initialize() {
-        SpuuchifyTemplate music = new SpuuchifyTemplate("https://i1.sndcdn.com/artworks-o9PcVKoWiZt7-0-t500x500.jpg", "Backburner", "NIKI", "OCEANS", "2:56", "s");       
-        spotifyContainer.getChildren().addAll(music);
+        SpuuchifyTemplate music1 = new SpuuchifyTemplate("https://i1.sndcdn.com/artworks-o9PcVKoWiZt7-0-t500x500.jpg", "Backburner", "NIKI", "OCEANS", "3:53", "mp3/Back.mp3");
+        spotifyContainer.getChildren().addAll(music1);
+        SpuuchifyTemplate music2 = new SpuuchifyTemplate("https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/64/2f/91/642f91e6-00a1-cb7c-7577-67c3f6a9d183/cover.jpg/1200x1200bf-60.jpg", "Misteryoso", "Cup of Joe", "Misteryoso", "3:43", "mp3/Back.wav");
+        spotifyContainer.getChildren().addAll(music2);
     }
 
     public void resizeSpuuchify() {

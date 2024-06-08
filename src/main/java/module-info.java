@@ -4,6 +4,7 @@ module buginvaderz.window {
     requires java.sql;
     requires java.desktop;
     requires javafx.graphics;
+    requires javafx.media;
 
 
     opens buginvaderz.window to javafx.fxml;

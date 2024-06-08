@@ -1,9 +1,9 @@
 package buginvaderz.window;
 
 
-import java.io.File;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
-import javafx.scene.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,6 +11,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+
+import java.io.File;
 
 public class SpuuchifyTemplate extends Pane {
 
@@ -50,6 +52,7 @@ public class SpuuchifyTemplate extends Pane {
         setPrefSize(1358, 50);
         initializeComponents();
         setBackground(Background.fill(Color.valueOf( "#192227")));
+        playButton();
     }
 
     public void initializeComponents() {
@@ -100,7 +103,10 @@ public class SpuuchifyTemplate extends Pane {
     public void playButton() {
         playButton.setOnMouseClicked(event -> {
             try {
-                Media sound = new Media(new File(""));
+                Media media = new Media(getClass().getResource(audioString).toExternalForm());
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.play();
+                System.out.println("Start");
             } 
             catch (Exception e) {
                 System.out.println(e.getMessage());

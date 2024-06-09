@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +18,28 @@
          <center>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="221.0" prefWidth="1350.0" BorderPane.alignment="CENTER">
                <content>
-                  <VBox fx:id="spotifyContainer" prefHeight="264.0" prefWidth="1349.0" />
+                  <VBox fx:id="spotifyContainer" prefHeight="282.0" prefWidth="1360.0" style="-fx-background-color: #192227;">
+                     <children>
+                        <Pane prefHeight="39.0" prefWidth="1349.0" style="-fx-background-color: #394E5A;">
+                           <children>
+                              <ImageView fitHeight="24.0" fitWidth="37.0" layoutX="1273.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/Duration.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="654.0" layoutY="16.0" text="Album" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="65.0" layoutY="16.0" prefHeight="20.0" prefWidth="35.0" text="Title" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children></VBox>
                </content>
             </ScrollPane>
          </center>
@@ -37,7 +60,36 @@
             </Pane>
          </top>
          <bottom>
-            <Pane prefHeight="94.0" prefWidth="1350.0" style="-fx-background-color: #192227;" BorderPane.alignment="CENTER" />
+            <Pane prefHeight="94.0" prefWidth="1350.0" style="-fx-background-color: #192227;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fx:id="operatorButton" fitHeight="38.0" fitWidth="36.0" layoutX="657.0" layoutY="14.0" onMouseClicked="#touchOperatorButton" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/Pause.png" />
+                     </image>
+                  </ImageView>
+                  <ProgressBar fx:id="progressBar" layoutX="426.0" layoutY="65.0" prefHeight="10.0" prefWidth="500.0" progress="0.0" styleClass="progress-indicator" stylesheets="@css/ProgressProperties.css" />
+                  <Slider fx:id="volumeScale" layoutX="1195.0" layoutY="43.0" prefHeight="14.0" prefWidth="118.0" />
+                  <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="1153.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/Speaker.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageId" fitHeight="65.0" fitWidth="62.0" layoutX="24.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/Spuuchify.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="titleId" layoutX="94.0" layoutY="34.0" prefHeight="17.0" prefWidth="120.0" text="No Title" textFill="WHITE">
+                     <font>
+                        <Font name="Perpetua Titling MT Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="artistId" layoutX="94.0" layoutY="47.0" prefHeight="17.0" prefWidth="123.0" text="No Artist" textFill="WHITE">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
          </bottom>
       </BorderPane>
    </children>

@@ -34,6 +34,7 @@
                 FXMLLoader titleBarLoader = new FXMLLoader(getClass().getResource("TitleBar.fxml"));
                 Parent titleBarRoot = titleBarLoader.load();
                 TitleBarController controller = titleBarLoader.getController();
+
                 controller.setRoot(rootPane);
                 controller.setMainPane(bodyPane);
                 controller.setMainApplicationPane(borderPane);

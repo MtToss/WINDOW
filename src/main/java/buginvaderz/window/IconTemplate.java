@@ -50,7 +50,6 @@ public class IconTemplate extends Pane {
     public void mouseClicked() {
         iconPane.setOnMouseClicked(event -> {
             try {
-                System.out.println("OPENING");
                 new Application(fxmlLoader, borderPane, pane);
                 System.out.println(fxmlLoader);
                 System.out.println("SPECIFIC ICON JUST BEEN OPENED");

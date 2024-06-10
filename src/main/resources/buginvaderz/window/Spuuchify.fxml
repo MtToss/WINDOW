@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="mainPaneSpuuchify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.4" prefWidth="1350.4" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.SpuuchifyController">
+<AnchorPane fx:id="mainPaneSpuuchify" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="buginvaderz.window.SpuuchifyController">
    <children>
-      <BorderPane fx:id="container" prefHeight="546.4" prefWidth="1350.4" style="-fx-background-color: #192227;">
+      <BorderPane fx:id="container" prefHeight="546.4" prefWidth="1350.4" style="-fx-background-color: #192227;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="221.0" prefWidth="1350.0" BorderPane.alignment="CENTER">
                <content>
@@ -68,7 +68,7 @@
                      </image>
                   </ImageView>
                   <ProgressBar fx:id="progressBar" layoutX="426.0" layoutY="65.0" prefHeight="10.0" prefWidth="500.0" progress="0.0" styleClass="progress-indicator" stylesheets="@css/ProgressProperties.css" />
-                  <Slider fx:id="volumeScale" layoutX="1195.0" layoutY="43.0" prefHeight="14.0" prefWidth="118.0" />
+                  <Slider fx:id="volumeScale" layoutX="1197.0" layoutY="43.0" prefHeight="14.0" prefWidth="118.0" value="100.0" />
                   <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="1153.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@img/Speaker.png" />

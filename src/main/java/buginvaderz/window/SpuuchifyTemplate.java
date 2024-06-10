@@ -1,8 +1,14 @@
 package buginvaderz.window;
 
-import javafx.application.Platform;
+import java.io.File;
+import java.io.IOException;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
+
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -11,13 +17,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-import java.io.File;
-import java.io.IOException;
 
 public class SpuuchifyTemplate extends Pane {
 
@@ -164,6 +163,8 @@ public class SpuuchifyTemplate extends Pane {
             clip.open(audioIn);
             totalFrames = clip.getFrameLength();
             clip.start();
+            
+            // clip.setMicrosecondPosition(); //set the 
 
             isPlaying = true;
             if (onPlayCallback != null) {
@@ -206,12 +207,13 @@ public class SpuuchifyTemplate extends Pane {
                 if (clip.isRunning()) {
                     if (onProgressCallback != null) {
                         System.out.println("Ganda ni Lei");
+                        System.out.println(getClass().getResourceAsStream(""));
                         onProgressCallback.run();
                     }
                 }
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -1,5 +1,8 @@
 package buginvaderz.window;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -13,9 +16,6 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 public class SpuuchifyController {
     @FXML
@@ -106,6 +106,7 @@ public class SpuuchifyController {
     private void updateProgressBar(SpuuchifyTemplate music) {
                 long currentFrame = music.getClipp().getMicrosecondPosition();
                 double fraction = (double) currentFrame / music.getClipp().getMicrosecondLength();
+                progressBar.setProgress(100);
                 progressBar.setProgress(fraction);
 
     }
@@ -120,14 +121,9 @@ public class SpuuchifyController {
                         Platform.runLater(() -> {
                             if (musicPlaying) {
                                 operatorButton.setImage(imageObjectPlay);
-                                for (SpuuchifyTemplate musics : spuuchifyTemplates) {
-                                    if (musics == currentlyPlayingMusic) {
-                                        imageId.setImage(musics.getImage());
-                                        titleId.setText(musics.getSongString());
-                                        artistId.setText(musics.getArtistString());
-
-                                    }
-                                }
+                                imageId.setImage(currentlyPlayingMusic.getImage());
+                                titleId.setText(currentlyPlayingMusic.getSongString());
+                                artistId.setText(currentlyPlayingMusic.getArtistString());
 
                             }
                         });
@@ -158,12 +154,17 @@ public class SpuuchifyController {
     }
 
     private void stopOtherMusic(SpuuchifyTemplate currentMusic) {
-        for (SpuuchifyTemplate music : spuuchifyTemplates) {
-            if (music != currentMusic && music.getIsPlaying()) {
-                music.setBackground(Background.fill(Color.valueOf("#192227")));
-                music.toPause();
+        if (currentlyPlayingMusic == null) {
+            currentlyPlayingMusic = currentMusic;
+        }
+        else {
+            currentlyPlayingMusic.setBackground(Background.fill(Color.valueOf("#192227")));
+            currentlyPlayingMusic.toPause();
+
+            if(currentlyPlayingMusic != currentMusic) {
+                currentlyPlayingMusic = currentMusic;
             }
         }
-        currentlyPlayingMusic = currentMusic;
+        
     }
 }

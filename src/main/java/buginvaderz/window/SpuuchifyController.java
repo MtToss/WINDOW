@@ -66,8 +66,8 @@ public class SpuuchifyController {
 
     @FXML
     public void initialize() throws IOException {
-        music1 = new SpuuchifyTemplate("https://i1.sndcdn.com/artworks-o9PcVKoWiZt7-0-t500x500.jpg", "Backburner", "NIKI", "Nicole", "3:53", "src/main/resources/buginvaderz/window/mp3/Backburner.wav", isPlaying);
-        music2 = new SpuuchifyTemplate("https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/64/2f/91/642f91e6-00a1-cb7c-7577-67c3f6a9d183/cover.jpg/1200x1200bf-60.jpg", "Misteryoso", "Cup Of Joe", "Misteryoso", "3:43", "src/main/resources/buginvaderz/window/mp3/Misteryoso.wav", isPlaying);
+        music1 = new SpuuchifyTemplate("https://i1.sndcdn.com/artworks-o9PcVKoWiZt7-0-t500x500.jpg", "Backburner", "NIKI", "Nicole", "3:53", "src/main/resources/buginvaderz/window/mp3/Back.mp3", isPlaying);
+        music2 = new SpuuchifyTemplate("https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/64/2f/91/642f91e6-00a1-cb7c-7577-67c3f6a9d183/cover.jpg/1200x1200bf-60.jpg", "Misteryoso", "Cup Of Joe", "Misteryoso", "3:43", "src/main/resources/buginvaderz/window/mp3/Misteryoso.mp3", isPlaying);
         music3 = new SpuuchifyTemplate("https://images.genius.com/52e1de2cca85a2c12de875230487d3ef.1000x1000x1.jpg", "Bad", "Wave To Earth", "0.1 flaws and all.","4:23", "src/main/resources/buginvaderz/window/mp3/Bad.wav", isPlaying);
         music4 = new SpuuchifyTemplate("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSm3f58ujVjJTOcyVJqzDx3elS8OBs6tRj1Tg&s", "Always", "Daniel Caesar", "Never Enough", "3:45", "src/main/resources/buginvaderz/window/mp3/Always.wav", isPlaying);
         music5 = new SpuuchifyTemplate("https://www.billboard.com/wp-content/uploads/media/Daniel-Caesar-2016-by-Keith-Henry-press-billboard-1548.jpg", "Get You", "Daniel Caesar, Kali Uchis", "Freudian", "4:38", "src/main/resources/buginvaderz/window/mp3/Get You.wav", isPlaying);
@@ -98,16 +98,24 @@ public class SpuuchifyController {
             }
         });
 
+        headerSpuuchify.widthProperty().addListener((observablex, oldValue, newValue) -> {
+            imageViewer.setFitWidth(newValue.doubleValue());
+        });
+
+        headerSpuuchify.heightProperty().addListener((observable, oldValue, newValue) -> {
+            imageViewer.setFitHeight(newValue.doubleValue());
+        });
+
         startMonitoring();
 
 
     }
 
     private void updateProgressBar(SpuuchifyTemplate music) {
-                long currentFrame = music.getClipp().getMicrosecondPosition();
-                double fraction = (double) currentFrame / music.getClipp().getMicrosecondLength();
-                progressBar.setProgress(100);
-                progressBar.setProgress(fraction);
+        double currentFrame = music.getMediaPlayer().getCurrentTime().toMillis();
+        double fraction = currentFrame / music.getMediaPlayer().getTotalDuration().toMillis();
+        progressBar.setProgress(100);
+        progressBar.setProgress(fraction);
 
     }
 

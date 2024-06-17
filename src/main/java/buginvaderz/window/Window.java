@@ -10,10 +10,11 @@ public class Window extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("Spuuchify.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("try.fxml"));
 
             Scene scene = new Scene(root);
-            primaryStage.setMaximized(true);
+            primaryStage.setWidth(700);
+            primaryStage.setHeight(700);
             primaryStage.setScene(scene);
             primaryStage.setTitle("Bug Invaderz");
             System.out.println("test");

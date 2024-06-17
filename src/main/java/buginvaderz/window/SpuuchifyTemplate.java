@@ -3,22 +3,19 @@ package buginvaderz.window;
 import java.io.File;
 import java.io.IOException;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.FloatControl;
-
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class SpuuchifyTemplate extends Pane {
+public class SpuuchifyTemplate extends BorderPane {
 
     Pane leftContainer = new Pane();
     ImageView imageId = new ImageView();
@@ -37,7 +34,7 @@ public class SpuuchifyTemplate extends Pane {
     ImageView playButton = new ImageView(new Image(getClass().getResourceAsStream("img/PlayIcon.png")));
 
     boolean isPlaying = false;
-    private Clip clip;
+    private MediaPlayer mediaPlayer;
 
     private String imageStringId;
     private String songStringId;
@@ -49,8 +46,7 @@ public class SpuuchifyTemplate extends Pane {
     private Runnable onPlayCallback;
     private Runnable onProgressCallback;
 
-    private long totalFrames;
-    private long pauseFramePosition;
+    private double pauseTimePosition;
 
     public SpuuchifyTemplate(String imageStringId, String songStringId, String artistStringId,
                              String albumStringId, String timeLengthStringId, String audioString, boolean isPlaying) throws IOException {
@@ -75,7 +71,6 @@ public class SpuuchifyTemplate extends Pane {
                 this.setBackground(Background.fill(Color.valueOf("#394447")));
             }
         });
-
     }
 
     public void setOnPlayCallback(Runnable onPlayCallback) {
@@ -119,12 +114,10 @@ public class SpuuchifyTemplate extends Pane {
         albumId.setLayoutY(12); albumId.setFont(Font.font("Verdana", FontWeight.BOLD, 10));
         centerContainer.getChildren().add(albumId);
 
-        borderPane.setLeft(leftContainer);
-        borderPane.setCenter(centerContainer);
-        borderPane.setRight(rightContainer);
-        borderPane.setPrefWidth(1350);
-        getChildren().addAll(borderPane);
-
+        setLeft(leftContainer);
+        setCenter(centerContainer); //old one is borderPane.setLeft,setCenter and setRight.
+        setRight(rightContainer);
+        //getChildren().addAll(borderPane);
     }
 
     public void setOnProgressCallback(Runnable onProgressCallback) {
@@ -132,7 +125,6 @@ public class SpuuchifyTemplate extends Pane {
     }
 
     public void hoverPane() {
-
         this.setOnMouseEntered(event -> {
             this.setBackground(Background.fill(Color.valueOf("#263238")));
             if(isPlaying) {
@@ -145,32 +137,24 @@ public class SpuuchifyTemplate extends Pane {
                 this.setBackground(Background.fill(Color.valueOf("#394447")));
             }
         });
-
-
     }
 
     public void play() {
         try {
-            if (clip != null && clip.isOpen()) {
-                clip.close();
-                clip.setFramePosition((int) pauseFramePosition);
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
             }
 
-            File file = new File(audioString);
-            AudioInputStream audioIn = AudioSystem.getAudioInputStream(file);
-
-            clip = AudioSystem.getClip();
-            clip.open(audioIn);
-            totalFrames = clip.getFrameLength();
-            clip.start();
-            
-            // clip.setMicrosecondPosition(); //set the 
-
-            isPlaying = true;
-            if (onPlayCallback != null) {
-                onPlayCallback.run();
-            }
-            myThreadCed();
+            Media media = new Media(new File(audioString).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setOnReady(() -> {
+                mediaPlayer.play();
+                isPlaying = true;
+                if (onPlayCallback != null) {
+                    onPlayCallback.run();
+                }
+                myThreadCed();
+            });
         }
         catch (Exception e) {
             System.out.println(e.getMessage());
@@ -178,16 +162,17 @@ public class SpuuchifyTemplate extends Pane {
     }
 
     public void toPause() {
-        if (clip != null) {
-            clip.stop();
+        if (mediaPlayer != null) {
+            mediaPlayer.pause();
             isPlaying = false;
-            pauseFramePosition = clip.getMicrosecondPosition();
+            pauseTimePosition = mediaPlayer.getCurrentTime().toMillis();
         }
     }
 
     public void toResume() {
-        if (clip != null) {
-            clip.start();
+        if (mediaPlayer != null) {
+            mediaPlayer.seek(javafx.util.Duration.millis(pauseTimePosition));
+            mediaPlayer.play();
             isPlaying = true;
             myThreadCed();
         }
@@ -197,17 +182,16 @@ public class SpuuchifyTemplate extends Pane {
         return isPlaying;
     }
 
-    public Clip getClipp() {
-        return clip;
+    public MediaPlayer getMediaPlayer() {
+        return mediaPlayer;
     }
 
     public void myThreadCed() {
         new Thread(() -> {
             while (isPlaying) {
-                if (clip.isRunning()) {
+                if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
                     if (onProgressCallback != null) {
                         System.out.println("Ganda ni Lei");
-                        System.out.println(getClass().getResourceAsStream(""));
                         onProgressCallback.run();
                     }
                 }
@@ -222,10 +206,8 @@ public class SpuuchifyTemplate extends Pane {
     }
 
     public void setVolume(double volume) {
-        if (clip != null && clip.isOpen()) {
-            FloatControl volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            float dB = (float) (Math.log(volume) / Math.log(10.0) * 20.0);
-            volumeControl.setValue(dB);
+        if (mediaPlayer != null) {
+            mediaPlayer.setVolume(volume);
         }
     }
 

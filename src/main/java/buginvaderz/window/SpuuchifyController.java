@@ -38,8 +38,9 @@ public class SpuuchifyController {
     private Label artistId;
     @FXML
     private ImageView imageId;
+    @FXML
+    private Pane imagePane;
 
-    boolean isPlaying = false;
     Image imageObjectPlay;
     Image imageObjectPause;
 
@@ -67,9 +68,13 @@ public class SpuuchifyController {
             }
         });
 
-        headerSpuuchify.widthProperty().addListener((observable, oldValue, newValue) -> imageViewer.setFitWidth(newValue.doubleValue()));
-        headerSpuuchify.heightProperty().addListener((observable, oldValue, newValue) -> imageViewer.setFitHeight(newValue.doubleValue()));
+        imagePane.widthProperty().addListener((observablex, oldValue, newValue) -> {
+            imageViewer.setFitWidth(newValue.doubleValue());
+        });
 
+        imagePane.heightProperty().addListener((observable, oldValue, newValue) -> {
+            imageViewer.setFitHeight(newValue.doubleValue());
+        });
         startMonitoring();
     }
 
@@ -78,7 +83,12 @@ public class SpuuchifyController {
             double currentFrame = music.getMediaPlayer().getCurrentTime().toMillis();
             double fraction = currentFrame / music.getMediaPlayer().getTotalDuration().toMillis();
             progressBar.setProgress(fraction);
+            if (fraction >= 1.0) {
+                switchToRandomTrack();
+            }
         }
+        //itong progressbar na ito is siya bahala sa duration ng music and kapag natapos yung progress ay pupunta sa random track 
+        //which mag pe-play ng another random track
     }
 
     private void startMonitoring() {
@@ -105,6 +115,8 @@ public class SpuuchifyController {
 
         thread.setDaemon(true);
         thread.start();
+        //ito yung thread na nagmo-monitor if may music na nagpe-play and if may nag pe-play papasok sa 
+        //if statement and kukunin yung kukununin
     }
 
     @FXML
@@ -118,6 +130,7 @@ public class SpuuchifyController {
                 operatorButton.setImage(imageObjectPlay);
             }
         }
+        //ito yung operator na play and pause
     }
 
     private void stopOtherMusic(SpuuchifyTemplate currentMusic) {
@@ -128,5 +141,29 @@ public class SpuuchifyController {
             currentlyPlayingMusic.setBackground(Background.fill(Color.valueOf("#192227")));
             currentlyPlayingMusic = currentMusic;
         }
+        //pinapalitan niya yung music and stop if may laman yung currentlyplayingmusic
+    }
+
+    private void switchToRandomTrack() {
+
+        
+        if (currentlyPlayingMusic != null) {
+            currentlyPlayingMusic.toPause();
+            currentlyPlayingMusic.setBackground(Background.fill(Color.valueOf("#192227")));
+        }
+
+        //ito pang shuffle stuff
+
+        int randomIndex = (int) (Math.random() * spuuchifyTemplates.size());
+        currentlyPlayingMusic = spuuchifyTemplates.get(randomIndex);
+        currentlyPlayingMusic.play();
+
+
+        //ina-update niya yung text and images ofcourse bro 
+        Platform.runLater(() -> {
+            titleId.setText(currentlyPlayingMusic.getSongString());
+            artistId.setText(currentlyPlayingMusic.getArtistString());
+            imageId.setImage(currentlyPlayingMusic.getImage());
+        });
     }
 }

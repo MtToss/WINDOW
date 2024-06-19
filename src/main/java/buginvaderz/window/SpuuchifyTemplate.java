@@ -1,6 +1,5 @@
 package buginvaderz.window;
 
-import java.io.File;
 import java.io.IOException;
 
 import javafx.scene.control.Label;
@@ -15,7 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class SpuuchifyTemplate extends BorderPane {
+public final class SpuuchifyTemplate extends BorderPane {
 
     private Pane leftContainer = new Pane();
     private ImageView imageId = new ImageView();
@@ -49,10 +48,10 @@ public class SpuuchifyTemplate extends BorderPane {
         this.audioString = audioString;
         this.isPlaying = isPlaying;
 
-        setPrefSize(1358, 50);
-        initializeComponents();
-        setBackground(Background.fill(Color.valueOf("#192227")));
-        hoverPane();
+        this.setPrefSize(1358, 50);
+        this.initializeComponents();
+        this.setBackground(Background.fill(Color.valueOf("#192227")));
+        this.hoverPane();
 
         this.setOnMouseClicked(event -> {
             if (isPlaying) {
@@ -62,10 +61,6 @@ public class SpuuchifyTemplate extends BorderPane {
                 this.setBackground(Background.fill(Color.valueOf("#394447")));
             }
         });
-    }
-
-    public void setOnPlayCallback(Runnable onPlayCallback) {
-        this.onPlayCallback = onPlayCallback;
     }
 
     public void initializeComponents() {
@@ -106,12 +101,16 @@ public class SpuuchifyTemplate extends BorderPane {
         centerContainer.getChildren().add(albumId);
 
         setLeft(leftContainer);
-        setCenter(centerContainer); //old one is borderPane.setLeft,setCenter and setRight.
+        setCenter(centerContainer);
         setRight(rightContainer);
     }
 
     public void setOnProgressCallback(Runnable onProgressCallback) {
         this.onProgressCallback = onProgressCallback;
+    }
+
+    public void setOnPlayCallback(Runnable onPlayCallback) {
+        this.onPlayCallback = onPlayCallback;
     }
 
     public void hoverPane() {
@@ -130,12 +129,13 @@ public class SpuuchifyTemplate extends BorderPane {
     }
 
     public void play() {
+        //obviously magpe-play?!?!
         try {
             if (mediaPlayer != null) {
                 mediaPlayer.stop();
             }
 
-            Media media = new Media(new File(audioString).toURI().toString());
+            Media media = new Media(getClass().getResource(audioString).toExternalForm());
             mediaPlayer = new MediaPlayer(media);
             mediaPlayer.setOnReady(() -> {
                 mediaPlayer.play();
@@ -152,6 +152,7 @@ public class SpuuchifyTemplate extends BorderPane {
     }
 
     public void toPause() {
+        //obviously magpo-pause?!?!
         if (mediaPlayer != null) {
             mediaPlayer.pause();
             isPlaying = false;
@@ -160,6 +161,7 @@ public class SpuuchifyTemplate extends BorderPane {
     }
 
     public void toResume() {
+        //obviously magre-resume?!?!
         if (mediaPlayer != null) {
             mediaPlayer.seek(javafx.util.Duration.millis(pauseTimePosition));
             mediaPlayer.play();
@@ -177,6 +179,7 @@ public class SpuuchifyTemplate extends BorderPane {
     }
 
     public void myThreadCed() {
+        //so if yung music ay playing gagana yung thread and if not edi walwal
         new Thread(() -> {
             while (isPlaying) {
                 if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
@@ -185,11 +188,14 @@ public class SpuuchifyTemplate extends BorderPane {
                     }
                 }
 
+                
                 try {
                     Thread.sleep(2000);
-                } catch (InterruptedException e) {
+                } 
+                catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                
             }
         }).start();
     }
@@ -200,6 +206,7 @@ public class SpuuchifyTemplate extends BorderPane {
         }
     }
 
+    @SuppressWarnings("exports")
     public Image getImage() {
         return image;
     }

@@ -17,35 +17,26 @@ import javafx.scene.text.FontWeight;
 
 public class SpuuchifyTemplate extends BorderPane {
 
-    Pane leftContainer = new Pane();
-    ImageView imageId = new ImageView();
-    Image image;
-    Label songId = new Label();
-    Label artistId = new Label();
-
-    Pane rightContainer = new Pane();
-    Label timeLengthId = new Label();
-
-    Label albumId = new Label();
-    Pane centerContainer = new Pane();
-
-    BorderPane borderPane = new BorderPane();
-
-    ImageView playButton = new ImageView(new Image(getClass().getResourceAsStream("img/PlayIcon.png")));
-
-    boolean isPlaying = false;
+    private Pane leftContainer = new Pane();
+    private ImageView imageId = new ImageView();
+    private Image image;
+    private Label songId = new Label();
+    private Label artistId = new Label();
+    private Pane rightContainer = new Pane();
+    private Label timeLengthId = new Label();
+    private Label albumId = new Label();
+    private Pane centerContainer = new Pane();
+    private ImageView playButton = new ImageView(new Image(getClass().getResourceAsStream("img/PlayIcon.png")));
+    private boolean isPlaying = false;
     private MediaPlayer mediaPlayer;
-
     private String imageStringId;
     private String songStringId;
     private String artistStringId;
     private String albumStringId;
     private String timeLengthStringId;
     private String audioString;
-
     private Runnable onPlayCallback;
     private Runnable onProgressCallback;
-
     private double pauseTimePosition;
 
     public SpuuchifyTemplate(String imageStringId, String songStringId, String artistStringId,
@@ -78,7 +69,7 @@ public class SpuuchifyTemplate extends BorderPane {
     }
 
     public void initializeComponents() {
-        image = new Image(imageStringId);
+        image = new Image(getClass().getResourceAsStream(imageStringId));
         imageId.setImage(image);
 
         songId.setText(songStringId);
@@ -117,7 +108,6 @@ public class SpuuchifyTemplate extends BorderPane {
         setLeft(leftContainer);
         setCenter(centerContainer); //old one is borderPane.setLeft,setCenter and setRight.
         setRight(rightContainer);
-        //getChildren().addAll(borderPane);
     }
 
     public void setOnProgressCallback(Runnable onProgressCallback) {
@@ -191,7 +181,6 @@ public class SpuuchifyTemplate extends BorderPane {
             while (isPlaying) {
                 if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
                     if (onProgressCallback != null) {
-                        System.out.println("Ganda ni Lei");
                         onProgressCallback.run();
                     }
                 }

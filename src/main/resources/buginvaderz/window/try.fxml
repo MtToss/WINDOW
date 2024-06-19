@@ -51,7 +51,7 @@
                      <left>
                         <Pane prefHeight="130.0" prefWidth="325.0" style="-fx-background-color: #192227;" BorderPane.alignment="CENTER">
                            <children>
-                              <ImageView fx:id="operatorButton" fitHeight="62.0" fitWidth="70.0" layoutX="14.0" layoutY="23.0" onMouseClicked="#touchOperatorButton" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="operatorButton" fitHeight="48.0" fitWidth="59.0" layoutX="14.0" layoutY="23.0" onMouseClicked="#touchOperatorButton" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@img/Pause.png" />
                                  </image>
